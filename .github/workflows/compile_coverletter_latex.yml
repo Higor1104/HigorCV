@@ -1,6 +1,7 @@
 
 name: Compile Cover Letter LaTeX document
 on:
+  workflow_dispatch:
   push:
     paths:
       - coverletter.tex
