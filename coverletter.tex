@@ -1,5 +1,8 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for Cover Letter
+%
+
 
 %-------------------------------------------------------------------------------
 % CONFIGURATIONS
@@ -9,6 +12,9 @@
 
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
 
 % Color for highlights
 % Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
@@ -23,7 +29,6 @@
 % \definecolor{text}{HTML}{333333}
 % \definecolor{graytext}{HTML}{5D5D5D}
 % \definecolor{lighttext}{HTML}{999999}
-% \definecolor{sectiondivider}{HTML}{5D5D5D}
 
 % Set false if you don't want to highlight section with awesome color
 \setbool{acvSectionColorHighlight}{true}
@@ -37,16 +42,26 @@
 %	Comment any of the lines below if they are not required
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
-\photo[circle,noedge,left]{./examples/profile}
-\name{Higor Silva}
-\position{Software Developer{\enskip\cdotp\enskip}Software Architect}
-\address{Brussels, Belgium}
+\photo[circle,noedge,left]{profile}
+\name{Higor A.}{Silva}
+\position{Software Developer{\enskip\cdotp\enskip}Java}
+\address{Brussels, BELGIUM}
 
-\mobile{(+32) 477-023-112}
+\mobile{ (+32) 477-023-112}
 \email{higoraraujosilva@hotmail.com}
-\homepage{www.posquit0.com}
-\github{posquit0}
-\linkedin{posquit0}
+\homepage{higor1104.github.io/higorsilva.github.io/}
+\github{github.com/higor1104}
+\linkedin{https://linkedin.com/in/higoraraujosilva}
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \twitter{@twit}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \medium{madium-id}
+% \googlescholar{googlescholar-id}{name-to-display}
+%% \firstname and \lastname will be used
+% \googlescholar{googlescholar-id}{}
+% \extrainfo{extra informations}
 
 \quote{``Be the change that you want to see in the world."}
 
@@ -74,7 +89,7 @@
 %-------------------------------------------------------------------------------
 \begin{document}
 
-% Print the header with above personal information
+% Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
 \makecvheader[R]
 
@@ -82,10 +97,10 @@
 % Leave any of these blank if they are not needed
 \makecvfooter
   {\today}
-  {Higor A. L. e Silva~~~·~~~Cover Letter}
+  {Higor A. Silva~~~·~~~Cover Letter}
   {}
 
-% Print the title with above letter information
+% Print the title with above letter informations
 \makelettertitle
 
 %-------------------------------------------------------------------------------
@@ -106,7 +121,7 @@ Duis sit amet magna ante, at sodales diam. Aenean consectetur porta risus et sag
 
 
 %-------------------------------------------------------------------------------
-% Print the signature and enclosures with above letter information
+% Print the signature and enclosures with above letter informations
 \makeletterclosing
 
 \end{document}
