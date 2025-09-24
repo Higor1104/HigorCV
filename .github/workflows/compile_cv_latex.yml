@@ -1,7 +1,10 @@
 
 
 name: Compile CV LaTeX document
-on: [push]
+on:
+  push:
+    paths:
+      - cv.tex
 jobs:
   build_latex:
     runs-on: ubuntu-latest
