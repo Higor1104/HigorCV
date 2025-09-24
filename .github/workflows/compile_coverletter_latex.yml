@@ -16,6 +16,7 @@ jobs:
         with:
           root_file: coverletter.tex
           compiler: lualatex
+          args: -lualatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode
       - uses: actions/upload-artifact@v4
         with:
           path: ./coverletter.pdf
