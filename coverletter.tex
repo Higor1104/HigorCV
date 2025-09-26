@@ -1,126 +1,81 @@
-%!TEX TS-program = xelatex
-%!TEX encoding = UTF-8 Unicode
-% Awesome CV LaTeX Template for Cover Letter
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deedy - Cover Letter Template
+% LaTeX Template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%-------------------------------------------------------------------------------
-% CONFIGURATIONS
-%-------------------------------------------------------------------------------
-% A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[11pt, a4paper]{awesome-cv}
-
-% Configure page margins with geometry
-\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
-
-% Specify the location of the included fonts
-\fontdir[fonts/]
-
-% Color for highlights
-% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
-%                 awesome-nephritis, awesome-concrete, awesome-darknight
-\colorlet{awesome}{awesome-red}
-% Uncomment if you would like to specify your own color
-% \definecolor{awesome}{HTML}{CA63A8}
-
-% Colors for text
-% Uncomment if you would like to specify your own color
-% \definecolor{darktext}{HTML}{414141}
-% \definecolor{text}{HTML}{333333}
-% \definecolor{graytext}{HTML}{5D5D5D}
-% \definecolor{lighttext}{HTML}{999999}
-
-% Set false if you don't want to highlight section with awesome color
-\setbool{acvSectionColorHighlight}{true}
-
-% If you would like to change the social information separator from a pipe (|) to something else
-\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-
-
-%-------------------------------------------------------------------------------
-%	PERSONAL INFORMATION
-%	Comment any of the lines below if they are not required
-%-------------------------------------------------------------------------------
-% Available options: circle|rectangle,edge/noedge,left/right
-\name{Higor A.}{Silva}
-\position{Software Developer{\enskip\cdotp\enskip}Java}
-\address{Brussels, BELGIUM}
-
-\mobile{ (+32) 477-023-112}
-\email{higoraraujosilva@hotmail.com}
-\homepage{higor1104.github.io/higorsilva.github.io/}
-\github{github.com/higor1104}
-\linkedin{https://linkedin.com/in/higoraraujosilva}
-% \gitlab{gitlab-id}
-% \stackoverflow{SO-id}{SO-name}
-% \twitter{@twit}
-% \skype{skype-id}
-% \reddit{reddit-id}
-% \medium{madium-id}
-% \googlescholar{googlescholar-id}{name-to-display}
-%% \firstname and \lastname will be used
-% \googlescholar{googlescholar-id}{}
-% \extrainfo{extra informations}
-
-\quote{``Be the change that you want to see in the world."}
-
-
-%-------------------------------------------------------------------------------
-%	LETTER INFORMATION
-%	All of the below lines must be filled out
-%-------------------------------------------------------------------------------
-% The company being applied to
-\recipient
-  {Company Recruitment Team}
-  {Google Inc.}
-% The date on the letter, default is the date of compilation
-\letterdate{\today}
-% The title of the letter
-\lettertitle{Job Application for Software Engineer}
-% How the letter is opened
-\letteropening{Dear Mr./Ms./Dr. Recruiter,}
-% How the letter is closed
-\letterclosing{Sincerely,}
-% Any enclosures with the letter
-\letterenclosure[Attached]{Resume File}
-
-
-%-------------------------------------------------------------------------------
+\documentclass[]{cover}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+ 
+\rfoot{Page \thepage \hspace{1pt}}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
 \begin{document}
 
-% Print the header with above personal informations
-% Give optional argument to change alignment(C: center, L: left, R: right)
-\makecvheader[R]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     TITLE NAME
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\namesection{John}{Doe}{ \urlstyle{same}\href{https://johndoe.xyz}{johndoe.xyz} | \href{mailto:me@johndoe.xyz}{me@johndoe.xyz} | 0
+7771238921 | \urlstyle{same}\href{https://github.com}{Github} | \urlstyle{same}\href{https://linkedin.com}{Linkedin}
+}
 
-% Print the footer with 3 arguments(<left>, <center>, <right>)
-% Leave any of these blank if they are not needed
-\makecvfooter
-  {\today}
-  {Higor A. Silva~~~·~~~Cover Letter}
-  {}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     MAIN COVER LETTER CONTENT
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill
 
-% Print the title with above letter informations
-\makelettertitle
+\begin{minipage}[t]{0.5\textwidth} 
+\companyname{Random LLC}
+\companyaddress{
+24 Hours \\
+Keep Grinding \\
+Leetcode
+}
 
-%-------------------------------------------------------------------------------
-%	LETTER CONTENT
-%-------------------------------------------------------------------------------
-\begin{cvletter}
+\end{minipage}
+\begin{minipage}[t]{0.49\textwidth} 
+\currentdate{\today}
+\end{minipage}
 
-\lettersection{About Me}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper neque sit amet lectus facilisis sed luctus nisl iaculis. Vivamus at neque arcu, sed tempor quam. Curabitur pharetra tincidunt tincidunt. Morbi volutpat feugiat mauris, quis tempor neque vehicula volutpat. Duis tristique justo vel massa fermentum accumsan. Mauris ante elit, feugiat vestibulum tempor eget, eleifend ac ipsum. Donec scelerisque lobortis ipsum eu vestibulum. Pellentesque vel massa at felis accumsan rhoncus.
+\lettercontent{Dear Recruiter,}
 
-\lettersection{Why Google?}
-Suspendisse commodo, massa eu congue tincidunt, elit mauris pellentesque orci, cursus tempor odio nisl euismod augue. Aliquam adipiscing nibh ut odio sodales et pulvinar tortor laoreet. Mauris a accumsan ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse vulputate sem vehicula ipsum varius nec tempus dui dapibus. Phasellus et est urna, ut auctor erat. Sed tincidunt odio id odio aliquam mattis. Donec sapien nulla, feugiat eget adipiscing sit amet, lacinia ut dolor. Phasellus tincidunt, leo a fringilla consectetur, felis diam aliquam urna, vitae aliquet lectus orci nec velit. Vivamus dapibus varius blandit.
+% The first paragraph of your job application letter should include information on why you are writing. Mention the job you are applying for and where you found the position. If you have a contact at the company, mention the person's name and your connection here.
 
-\lettersection{Why Me?}
-Duis sit amet magna ante, at sodales diam. Aenean consectetur porta risus et sagittis. Ut interdum, enim varius pellentesque tincidunt, magna libero sodales tortor, ut fermentum nunc metus a ante. Vivamus odio leo, tincidunt eu luctus ut, sollicitudin sit amet metus. Nunc sed orci lectus. Ut sodales magna sed velit volutpat sit amet pulvinar diam venenatis.
-
-\end{cvletter}
+\lettercontent{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus laoreet tellus tincidunt, sagittis erat nec, sodales enim. Fusce eget iaculis dui. Morbi ante mi, fermentum et vehicula sit amet, sagittis id odio. Proin eget velit dignissim, imperdiet risus vitae, vulputate urna. In commodo ex vitae nisi placerat, ac lobortis velit efficitur. Ut quam mi, commodo quis justo id, faucibus feugiat nisl.
+}
 
 
-%-------------------------------------------------------------------------------
-% Print the signature and enclosures with above letter informations
-\makeletterclosing
+   
+% The next section of your cover letter should describe what you have to offer the company. Make strong connections between your abilities and the requirements listed in the job posting. Mention specifically how your skills and experience match the job. Expand on the information in your resume.
+% Try to support each statement you make with a piece of evidence. Use several shorter paragraphs or bullets rather than one large block of text, which can be difficult to read and absorb quickly.
+%For example 
 
-\end{document}
+% Using the knowledge and skills I have acquired in my <DEGREE PROGRAM> combined with my technical abilities I believe I can provide significant value to <COMPANY> while providing me invaluable experience to <PREPARE FOR OR FURTHER CAREER>.
+% <RELEVANT LIFE STORY/ WORK/ PROJECT >
+% In own projects, my coursework, work as a <PREVIOUS JOB TITLE> I have applied knowledge of <SUBJECT MATTER>.
+% <LIST OF SMART SOUNDING SKILLS AND TOOLS>.
+% Combining these tools with my interests in <FIELD> issues, I hope to help the <DEPARTMENT> answer questions about the <SUBJECT> behind <FIELD> projects.
+
+\lettercontent{Ut tempor, nulla at tincidunt sodales, sapien magna luctus purus, at ornare nulla nunc ut nibh. Donec ex purus, cursus at tincidunt non, dictum at lectus. Vivamus rutrum lacinia felis, id tempor velit. Fusce dictum laoreet mauris id placerat. Aenean pellentesque ultrices libero, eget placerat ipsum hendrerit id. Suspendisse at sem euismod tortor vehicula sodales in quis libero. Nulla commodo diam justo, sed vestibulum nulla commodo a. Curabitur tempor placerat magna eu vehicula. Etiam a lectus ornare, commodo dolor eu, blandit odio. Sed ut metus a sem dapibus euismod.
+}
+
+\lettercontent{Maecenas eu malesuada ex. Mauris eleifend risus ut enim malesuada, eu malesuada nulla tincidunt. Cras mattis consectetur lacus. Aliquam volutpat pharetra nulla, ac molestie lectus pretium non. Sed egestas dui ac eleifend semper. Fusce tristique tempus arcu, quis tincidunt nunc pulvinar in. Donec malesuada turpis aliquam aliquam luctus. Fusce nibh velit, tristique vel enim gravida, ullamcorper interdum lacus. Proin sit amet ligula felis. 
+}
+
+% Conclude your application letter by thanking the employer for considering you for the position. 
+
+\lettercontent{Praesent non elementum enim, id aliquet risus. Morbi sit amet urna condimentum, pulvinar lacus sit amet, accumsan lectus. Morbi facilisis mauris ut turpis tincidunt, vel convallis nibh placerat.}
+\vspace{0.5cm}
+
+\closing{Sincerely,\\ \vspace{.1cm} \includegraphics[width=4cm]{OpenFonts/signature} \vspace{-1cm} }
+
+\signature{John Doe}
+
+\end{document}  
+\documentclass[]{article}
