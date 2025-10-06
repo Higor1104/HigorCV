@@ -1,0 +1,442 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={John Doe's CV},
+    pdfauthor={Higor Silva},
+    pdfcreator={HigorSilva},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Higor Araujo Leite e Silva
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{Zaventem, Belgium}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:higoraraujosilva@hotmail.com}{higoraraujosilva@hotmail.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:+32-047-723-112}{+32-047-723-112}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://higor1104.github.io/higorsilva.github.io/}{https://higor1104.github.io/higorsilva.github.io/}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://linkedin.com/in/higoraraujosilva}{linkedin.com/in/higoraraujosilva}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/higor1104}{github.com/higor1104}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+
+
+    \section{Introduction de Carrière}
+
+        \begin{onecolentry}
+            Développeur Java Senior avec une vaste expérience dans la conception et la modernisation d'applications évolutives et sécurisées. Forte spécialisation en Java, dans l'écosystème Spring et les microservices, avec une solide formation en DevOps, plateformes cloud et gestion de bases de données. Compétence dans la migration de systèmes hérités vers des solutions conteneurisées et prêtes pour le cloud. Actuellement, j'élargis mes connaissances en Quarkus et explore des cas d'utilisation pratiques. Certifié Java et pratiques agiles, fluide en anglais et portugais avec des connaissances de base en français et néerlandais, avec une expérience professionnelle au Brésil, au Portugal et en Belgique.
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+
+    \section{Éducation}
+
+        \begin{twocolentry}{
+            Févr 2011 – Mai 2016
+        }
+            \textbf{Université du Cotemig}, Baccalauréat en Systèmes d'Information\end{twocolentry}
+
+        \vspace{0.10 cm}
+
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{Matières :} Développement de sites Web, en passant par toutes les phases de livraison depuis le concept initial d'un client jusqu'à la documentation et la présentation au "client"
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.15 cm}
+        \begin{twocolentry}{
+            Mai 2015
+        }
+            \textbf{ORACLE}, Oracle Certified Associate, Programmeur Java SE 7
+        \end{twocolentry}
+            
+        \vspace{0.15 cm}
+
+        \begin{twocolentry}{
+            Juil 2009 – Déc 2010
+        }
+            \textbf{Formation Professionnelle Senai}, Formation Technique
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{Matières :} Concepts de logiciels et matériels, maintenance des ordinateurs, serveurs Windows et Linux, concepts d'électricité
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Expérience}
+
+        \begin{twocolentry}{
+            Févr 2024 – Présent
+        }
+            \textbf{Ingénieur en Logiciels}, EEAS -- Bruxelles, BE
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        
+        \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai migré plusieurs applications vers une architecture DevOps utilisant Docker, JDK 21, VueJS et Spring Boot 3, GitHub Actions et Tenzur
+                \item J'ai refactorisé une logique complexe, éliminé les mauvaises pratiques de code et implémenté des tests unitaires avec Mockito, garantissant la qualité et la maintenabilité du code
+                \item J'ai conçu et implémenté une nouvelle couche de sécurité utilisant Spring Security et OIDC, améliorant les standards d'authentification et d'autorisation
+                \item J'ai développé de nouvelles fonctionnalités et corrigé des bogues, en suivant les meilleures pratiques de l'industrie pour des logiciels évolutifs et faciles à maintenir
+                \item J'ai surveillé et résolu des problèmes d'applications en utilisant Dynatrace, garantissant une haute fiabilité et performance
+            \end{highlights}
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Juil 2022 – Nov 2023
+        }
+            \textbf{Développeur Back-end}, ING Bank -- Bruxelles, BE
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        
+        \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai soutenu et migré une application Java EE héritée vers une architecture moderne conteneurisée DevOps avec Spring Boot, OpenShift, améliorant l'évolutivité, la maintenance et la performance
+                \item J'ai analysé les exigences et implémenté de nouvelles fonctionnalités et améliorations pour des systèmes hérités et modernisés
+                \item J'ai maintenu des applications héritées sur des serveurs WebSphere tout en effectuant la transition vers un environnement de microservices avec containerisation utilisant Red Hat OpenShift
+                \item J'ai collaboré au sein d'une équipe agile, garantissant la livraison ponctuelle et de haute qualité des solutions
+                \item J'ai surveillé les applications et la performance en utilisant Kibana, Grafana et Prometheus, permettant une résolution proactive des problèmes et une fiabilité du système
+            \end{highlights}
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Avr 2021 – Juin 2022
+        }
+            \textbf{Développeur Back-end}, Waitrose -- Lisbonne, PT
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        
+        \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai contribué à la migration d'applications de détail héritées vers une plateforme moderne et évolutive en utilisant des technologies de pointe, soutenant les services en ligne, les systèmes en magasin, l'auto-service et les intégrations tierces.
+                \item J'ai conçu et implémenté des APIs REST sécurisées et performantes avec une authentification robuste, une autorisation et un suivi de la performance, en suivant les standards de l'entreprise.
+                \item J'ai appliqué la programmation réactive avec Spring Project Reactor pour améliorer la réactivité du système et sa résilience sous une forte charge.
+                \item J'ai développé des microservices en utilisant Spring Boot et Spring Cloud, déployés sur l'infrastructure AWS (\textbf{Lambda, SNS, SQS}, RDS, KMS, CloudFormation) pour garantir évolutivité et fiabilité.
+                \item J'ai surveillé les systèmes de production et résolu des incidents, en utilisant Grafana et la stack ELK pour l'observabilité et la gestion proactive des problèmes.
+            \end{highlights}
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Sept 2018 – Avr 2021
+        }
+            \textbf{Ingénieur en Logiciels}, BMG Bank -- Minas Gerais, BR
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        
+        \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai soutenu l'une des plus grandes plateformes de crédit du pays, utilisée par plus de 40 000 utilisateurs quotidiens et traitant plus de 100 000 propositions de crédit, d'assurances, de prêts et de créations de comptes
+                \item J'ai participé aux discussions commerciales pour traduire les exigences en nouvelles fonctionnalités et solutions techniques
+                \item J'ai conçu et développé des microservices et des applications Java EE/Spring Boot, améliorant l'évolutivité et la livraison de fonctionnalités
+                \item J'ai implémenté la stack ELK pour la gestion centralisée des logs, facilitant la résolution des problèmes et la surveillance
+                \item J'ai collaboré avec les développeurs pour garantir la qualité du code et la livraison fiable dans un environnement agile
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Juin 2018 – Août 2018
+        }
+            \textbf{Ingénieur en Logiciels}, CI\&T (Projet iHeartMedia) -- Minas Gerais, BR
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        
+        \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai contribué à la migration de plusieurs systèmes hérités vers une architecture de microservices résiliente, améliorant l'évolutivité, la modularité et la maintenance.
+                \item J'ai développé des APIs RESTful avec Java 8, Spring Framework et Hibernate, alimentant les services back-end de plusieurs sites à fort trafic.
+                \item J'ai conçu et implémenté des schémas NoSQL dans Cassandra, permettant des requêtes rapides sur de grands volumes de données et garantissant la stabilité sous forte charge.
+                \item J'ai collaboré avec des équipes distribuées (Scrum avec équipe des États-Unis, OnePieceFlow localement), garantissant des livraisons agiles et fiables.
+                \item J'ai utilisé des technologies modernes comme la stack Spring Netflix (Ribbon, Eureka, Feign, Hystrix), Kubernetes, Gradle et ELK Stack pour la surveillance et la résilience.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Avr 2017 – Mai 2018
+        }
+            \textbf{Ingénieur en Logiciels}, BMG Bank -- Minas Gerais, BR
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        
+                \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai livré des correctifs de code essentiels à tous les niveaux d'une application Web financière à grande échelle
+                \item J'ai amélioré des systèmes hérités pour répondre à de nouvelles exigences métier et utilisateurs
+                \item J'ai résolu des problèmes d'architecture, réduisant le temps de développement, améliorant la qualité du code et augmentant la maintenabilité
+                \item J'ai collaboré dans un environnement agile (Scrum), soutenant CI/CD avec Jenkins et le monitoring de performance avec CA Introscope
+            \end{highlights}
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+        
+
+        \begin{twocolentry}{
+            Fév 2016 – Mars 2017
+        }
+            \textbf{Développeur Full Stack}, IMedicina -- Minas Gerais, BR
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        
+        \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai contribué à une plateforme nationale de gestion médicale, soutenant les soins aux patients, l’allocation des ressources et les opérations financières
+                \item J'ai géré des instances d'applications Docker et soutenu CI/CD avec Jenkins
+                \item J'ai implémenté une sécurité basée sur OAuth2 pour la communication entre microservices
+                \item J'ai résolu des bogues et problèmes techniques, assurant la fiabilité du système et des livraisons ponctuelles sous pression
+                \item J'ai travaillé avec une stack technologique moderne incluant Spring, Hibernate, QueryDSL, APIs REST, AngularJS, MySQL, Neo4J, Apache Solr et Linux
+            \end{highlights}
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+        
+        \begin{twocolentry}{
+            Juin 2013 – Janv 2016
+        }
+            \textbf{Développeur Java}, Cast IT Group -- Minas Gerais, BR
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item J'ai développé et maintenu des applications Web (AngularJS, JSF, Apache Wicket) et desktop (Java Swing)
+                \item J'ai implémenté des solutions de sécurité, de persistance et de compilation en utilisant Spring Security, Hibernate, Maven et JBoss
+                \item J'ai géré des bases de données (Oracle, MySQL) et utilisé le contrôle de version avec SVN/TortoiseSVN
+                \item J'ai participé à des programmes de formation et de certification (Java, C-Sharp, Scrum)
+            \end{highlights}
+        \end{onecolentry}
+        
+    \section{Études Personnelles}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Actuellement en train d’approfondir mon expertise en Quarkus, en explorant des cas d’utilisation concrets et en expérimentant avec des applications réelles. Je cherche des occasions d’appliquer et de partager ces connaissances dans des projets professionnels, contribuant à des solutions innovantes et performantes.
+            \end{highlights}
+        \end{onecolentry}
+        
+    \section{Compétences}
+
+        \begin{onecolentry} \textbf{Compétences interpersonnelles}\end{onecolentry}
+
+        \vspace{0.10 cm}
+
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Collaboration avec des équipes distribuées et multiculturelles (Brésil, Portugal, Belgique, États-Unis)
+                \item Excellentes compétences en résolution de problèmes et en analyse sous pression
+                \item Communication efficace avec les parties prenantes métiers et techniques
+                \item Capacité d'adaptation et apprentissage rapide de nouvelles technologies
+                \item Mentorat et accompagnement d'équipes sur les meilleures pratiques et la qualité du code
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry} \textbf{Compétences techniques}\end{onecolentry}
+
+        \vspace{0.10 cm}
+
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{Programmation \& Frameworks} - Java 11–21, Spring Boot 3, Spring Security, Microservices, Programmation Réactive (Spring Project Reactor), APIs RESTful, Angular
+                \item \textbf{Cloud \& Conteneurisation} - AWS (Lambda, SNS, SQS, RDS, KMS, CloudFormation), Microsoft Azure, Docker, Kubernetes, OpenShift
+                \item \textbf{Bases de Données \& Gestion de Données} - MySQL, Oracle, Redis, Cassandra (NoSQL), Neo4J
+                \item \textbf{DevOps \& Observabilité} - CI/CD (Jenkins, GitLab, GitHub Actions, Azure DevOps), Gradle, Maven, ELK Stack, Grafana, Dynatrace, SonarQube
+                \item \textbf{Pratiques Modernes} - Agile (Scrum/Kanban), Microservices Conteneurisés, Meilleures Pratiques de Sécurité, Architecture Réactive \& Orientée Messages
+            \end{highlights}
+        \end{onecolentry}
+
+
+\end{document}
